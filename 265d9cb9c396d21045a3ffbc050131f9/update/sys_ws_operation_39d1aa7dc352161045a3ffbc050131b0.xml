@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>PATCH</http_method>
+        <name>UPDATE Vehicle (v2)</name>
+        <operation_script><![CDATA[(function process(/**RESTAPIRequest*/ request, /**RESTAPIResponse*/ response) {
+
+    // Declare empty array for the response body
+    var answer = [];
+
+    // Get the VIN from the path parameter
+    var vin = request.pathParams.vin;
+
+    // Get variables from the request body
+    var requestBody = request.body.data;
+    var make = requestBody.make;
+    var model = requestBody.model;
+    var year = requestBody.year;
+    var country = requestBody.country;
+    var city = requestBody.city;
+
+    // Generate 404 if VIN is not provided
+    if (!vin) {
+        response.setError(new sn_ws_err.NotFoundError('No VIN defined.'));
+        response.setStatus(404);
+        return;
+    }
+
+    // Generate 404 if the request body contains no data
+    if (!make && !model && !year && !country && !city) {
+        response.setError(new sn_ws_err.NotFoundError('Object contains no or invalid properties.'));
+        response.setStatus(404);
+        return;
+    }
+
+    // Query the vehicle table for the provided VIN
+    var vehicleGr = new GlideRecord('x_793388_vehicles_vehicles'); // Replace with your table name
+    vehicleGr.addQuery('vin', vin);
+    vehicleGr.query();
+
+    // Generate 404 if no matching record is found
+    if (!vehicleGr.hasNext()) {
+        response.setError(new sn_ws_err.NotFoundError('No vehicle found.'));
+        response.setStatus(404);
+        return;
+    }
+
+    // Update the vehicle record with the details from the request body
+    if (vehicleGr.next()) {
+        if (make) vehicleGr.make = make;
+        if (model) vehicleGr.model = model;
+        if (year) vehicleGr.year = year;
+        if (country) vehicleGr.country = country;
+        if (city) vehicleGr.city = city;
+        vehicleGr.update();
+
+        // Create a JSON object with updated record details
+        var vehicleObj = {
+            "make": vehicleGr.make,
+            "model": vehicleGr.model,
+            "vin": vehicleGr.vin,
+            "year": vehicleGr.year,
+            "country": vehicleGr.country,
+            "city": vehicleGr.city,
+            "sys_id": vehicleGr.sys_id
+        };
+        answer.push(vehicleObj);
+    }
+
+    // Set 200 status for success and return the updated record
+    response.setStatus(200);
+    response.setBody(answer);
+
+})(request, response);
+]]></operation_script>
+        <operation_uri>/api/x_793388_vehicles/v2/vehicles/vehicle/{vin}</operation_uri>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/vehicle/{vin}</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-06 19:16:33</sys_created_on>
+        <sys_id>39d1aa7dc352161045a3ffbc050131b0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>UPDATE Vehicle (v2)</sys_name>
+        <sys_package display_value="Vehicles" source="x_793388_vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_scope>
+        <sys_update_name>sys_ws_operation_39d1aa7dc352161045a3ffbc050131b0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-06 19:16:33</sys_updated_on>
+        <web_service_definition display_value="Vehicles">42cdb57dc39ed21045a3ffbc050131d8</web_service_definition>
+        <web_service_version display_value="v2">79d1667dc352161045a3ffbc0501314a</web_service_version>
+    </sys_ws_operation>
+</record_update>

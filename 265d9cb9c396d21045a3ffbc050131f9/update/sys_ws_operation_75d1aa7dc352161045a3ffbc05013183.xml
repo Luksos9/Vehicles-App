@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>DELETE</http_method>
+        <name>DELETE Vehicle (v2)</name>
+        <operation_script><![CDATA[(function process(/**RESTAPIRequest*/ request, /**RESTAPIResponse*/ response) {
+
+    // Declare empty array for response
+    var answer = [];
+
+    // Get the VIN from the path parameter
+    var vin = request.pathParams.vin;
+
+    // Validate if VIN is provided
+    if (!vin) {
+        response.setError(new sn_ws_err.NotFoundError('VIN not provided.'));
+        response.setStatus(404);
+        return;
+    }
+
+    // Query the vehicle table for the provided VIN
+    var vehicleGr = new GlideRecord('x_793388_vehicles_vehicles'); // Replace with your table name
+    vehicleGr.addQuery('vin', vin);
+    vehicleGr.query();
+
+    // Generate 404 if no matching record is found
+    if (!vehicleGr.hasNext()) {
+        response.setError(new sn_ws_err.NotFoundError('Vehicle not found.'));
+        response.setStatus(404);
+        return;
+    }
+
+    // For the vehicle found, delete it and create a response
+    while (vehicleGr.next()) {
+        vehicleGr.deleteRecord();
+
+        // Create a JSON object with details of the deleted record
+        var vehicleObj = {
+            "vin": vehicleGr.getValue('vin'),
+            "make": vehicleGr.getValue('make'),
+            "model": vehicleGr.getValue('model'),
+            "year": parseInt(vehicleGr.getValue('year'), 10),
+            "city": vehicleGr.getValue('city'),
+            "country": vehicleGr.getValue('country'),
+            "message": "Vehicle deleted."
+        };
+        answer.push(vehicleObj);
+    }
+
+    // Generate the response body
+    response.setBody(answer);
+
+})(request, response);
+]]></operation_script>
+        <operation_uri>/api/x_793388_vehicles/v2/vehicles/vehicle/{vin}</operation_uri>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/vehicle/{vin}</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-06 19:16:33</sys_created_on>
+        <sys_id>75d1aa7dc352161045a3ffbc05013183</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DELETE Vehicle (v2)</sys_name>
+        <sys_package display_value="Vehicles" source="x_793388_vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_scope>
+        <sys_update_name>sys_ws_operation_75d1aa7dc352161045a3ffbc05013183</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-06 19:16:33</sys_updated_on>
+        <web_service_definition display_value="Vehicles">42cdb57dc39ed21045a3ffbc050131d8</web_service_definition>
+        <web_service_version display_value="v2">79d1667dc352161045a3ffbc0501314a</web_service_version>
+    </sys_ws_operation>
+</record_update>
