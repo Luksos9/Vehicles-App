@@ -2,17 +2,17 @@
     <sys_security_acl_role action="INSERT_OR_UPDATE">
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2024-12-06 09:45:08</sys_created_on>
-        <sys_id>970f1c7dc396d21045a3ffbc05013176</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>x_793388_vehicles_vehicles.x_793388_vehicles.integration</sys_name>
+        <sys_created_on>2024-12-07 07:22:36</sys_created_on>
+        <sys_id>afd64946c312121045a3ffbc05013177</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Scripted REST Vehicles Resource.x_793388_vehicles.integration</sys_name>
         <sys_package display_value="Vehicles" source="x_793388_vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_scope>
-        <sys_security_acl display_value="x_793388_vehicles_vehicles">530f1c7dc396d21045a3ffbc05013170</sys_security_acl>
-        <sys_update_name>sys_security_acl_role_970f1c7dc396d21045a3ffbc05013176</sys_update_name>
+        <sys_security_acl display_value="Scripted REST Vehicles API">2fb64186c312121045a3ffbc05013127</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_afd64946c312121045a3ffbc05013177</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2024-12-06 09:45:08</sys_updated_on>
+        <sys_updated_on>2024-12-07 07:23:40</sys_updated_on>
         <sys_user_role display_value="x_793388_vehicles.integration" name="x_793388_vehicles.integration">b57d18f9c396d21045a3ffbc050131e9</sys_user_role>
     </sys_security_acl_role>
 </record_update>

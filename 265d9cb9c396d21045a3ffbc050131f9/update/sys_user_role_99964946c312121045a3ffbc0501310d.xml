@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description>For accessing Vehicless API resources</description>
+        <elevated_privilege>false</elevated_privilege>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_793388_vehicles.resource</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>resource</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-07 07:16:38</sys_created_on>
+        <sys_id>99964946c312121045a3ffbc0501310d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_793388_vehicles.resource</sys_name>
+        <sys_package display_value="Vehicles" source="x_793388_vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_scope>
+        <sys_update_name>sys_user_role_99964946c312121045a3ffbc0501310d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-07 07:16:38</sys_updated_on>
+    </sys_user_role>
+</record_update>

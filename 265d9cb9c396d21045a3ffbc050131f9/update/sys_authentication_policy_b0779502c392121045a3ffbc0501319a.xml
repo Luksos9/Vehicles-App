@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_authentication_policy">
+    <sys_authentication_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <decision_table display_value="IP Access Control">6e879502c392121045a3ffbc0501319e</decision_table>
+        <description>Access to Vehicles API only from specified IP addresses</description>
+        <internal_name>x_793388_vehicles.IP Access Control</internal_name>
+        <name>IP Access Control</name>
+        <sys_class_name>sys_authentication_policy</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-07 08:30:25</sys_created_on>
+        <sys_id>b0779502c392121045a3ffbc0501319a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>IP Access Control</sys_name>
+        <sys_package display_value="Vehicles" source="x_793388_vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Vehicles">265d9cb9c396d21045a3ffbc050131f9</sys_scope>
+        <sys_update_name>sys_authentication_policy_b0779502c392121045a3ffbc0501319a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-07 08:30:25</sys_updated_on>
+        <type>any</type>
+    </sys_authentication_policy>
+    <sys_translated_text action="delete_multiple" query="documentkey=b0779502c392121045a3ffbc0501319a"/>
+</record_update>
